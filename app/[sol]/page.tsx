@@ -141,11 +141,11 @@ export default function SolPage() {
 
     useEffect(() => {
         fetch("/api/getWeatherData")
-            .then((res) => {
-                if (!res.ok) throw new Error(`API error ${res.status}`);
-                return res.json();
+            .then((res) => res.json())
+            .then((json: WeatherResponse & { error?: string; detail?: string }) => {
+                if (json.error) throw new Error(`${json.error}${json.detail ? `: ${json.detail}` : ""}`);
+                setData(json);
             })
-            .then((json: WeatherResponse) => setData(json))
             .catch((err: Error) => setError(err.message));
     }, []);
 

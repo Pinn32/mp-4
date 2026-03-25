@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
-const API_KEY = process.env.API_KEY;
+const API_KEY = process.env.API_KEY ?? "DEMO_KEY";
 
 export async function GET(): Promise<NextResponse> {
     const res = await fetch(
@@ -10,7 +10,8 @@ export async function GET(): Promise<NextResponse> {
     );
 
     if (res.status !== 200) {
-        return NextResponse.json({ error: "Failed to fetch data" }, { status: 500 });
+        const detail = await res.text();
+        return NextResponse.json({ error: "Failed to fetch data", status: res.status, detail }, { status: 500 });
     }
 
     const data = await res.json();
