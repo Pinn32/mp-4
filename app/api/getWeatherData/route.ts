@@ -1,4 +1,4 @@
-export async function getWeatherData(): Promise<Response> {
+export async function GET(): Promise<Response> {
     const API_KEY = process.env.API_KEY;
 
     // Make API request

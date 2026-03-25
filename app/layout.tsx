@@ -16,7 +16,7 @@ const bitcountPropSingle = Bitcount_Prop_Single({
 
 // Metadata
 export const metadata: Metadata = {
-  title: "%s | mp-4",
+  title: "mp-4 | CS601",
   description: "Next app homework using api with key",
 };
 
@@ -30,7 +30,9 @@ export default function RootLayout({
     <>
       <html lang="en" className={`${bitcountPropDouble.variable} ${bitcountPropSingle.variable}`}>
             <body>
-                <main>{children}</main>
+                <main>
+                    {children}
+                </main>
             </body>
       </html>
     </>
