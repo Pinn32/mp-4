@@ -3,9 +3,7 @@ export async function GET(): Promise<Response> {
 
     // Make API request
     const res = await fetch(`https://api.nasa.gov/insight_weather/?api_key=${API_KEY}&feedtype=json&ver=1.0`, {
-        headers: {
-            Authorization: `Bearer ${API_KEY}`,
-        },
+        cache: "no-store",
     });
 
     // Parse JSON data from API Response
